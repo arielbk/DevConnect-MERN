@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const mongoose = require('mongoose');
 const passport = require('passport');
 
 // Load validation
@@ -51,7 +50,7 @@ router.get('/all', (req, res) => {
       }
       res.json(profiles);
     })
-    .catch(err => {
+    .catch(() => {
       errors.profiles = 'There are no profiles';
       return res.status(404).json(errors);
     });
@@ -143,7 +142,7 @@ router.post('/', passport.authenticate('jwt', { session: false }), (req, res) =>
           .then(profile => {
             if(profile) {
               errors.handle = 'That handle already exists';
-              res.status(400, json(errors));
+              res.status(400).json(errors);
             }
 
             // Save profile
