@@ -72,8 +72,7 @@ router.post('/login', async (req,res) => {
     return res.status(400).json(errors);
   }
 
-  const email = req.body.email;
-  const password = req.body.password;
+  const { email, password } = req.body;
 
   // find user by email
   User.findOne({ email })
