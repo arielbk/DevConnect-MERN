@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
 import axios from 'axios';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { loginUser } from '../../actions/authActions';
 
 class Login extends Component {
   state = {
@@ -75,4 +78,15 @@ class Login extends Component {
   }
 };
 
-export default Login;
+loginUser.propTypes = {
+  loginUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = state => ({
+  auth: state.auth,
+  errors: state.errors
+});
+
+export default connect(null, { loginUser })(Login);
