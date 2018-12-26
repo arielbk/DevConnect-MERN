@@ -12,6 +12,7 @@ import Footer from './components/layout/Footer';
 import Landing from './components/layout/Landing';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
+import Dashboard from './components/dashboard/Dashboard';
 
 import './App.css';
 
@@ -21,8 +22,6 @@ if (localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken);
   // Decode token and get user info and expiration
   const decoded = jwt_decode(localStorage.jwtToken);
-  // Set user and isAuthenticated
-  store.dispatch(setCurrentUser(decoded));
 
   // Check for expired token
   const currentTime = Date.now() / 1000;
@@ -33,7 +32,11 @@ if (localStorage.jwtToken) {
 
     // Redirect to login
     window.location.href = '/login';
+  } else {
+    // Set user and isAuthenticated
+    store.dispatch(setCurrentUser(decoded));
   }
+
 }
 
 class App extends Component {
@@ -47,6 +50,7 @@ class App extends Component {
               <div className="container">
                 <Route exact path="/register" component={Register} />
                 <Route exact path="/login" component={Login} />
+                <Route exact path="/dashboard" component={Dashboard} />
               </div>
             <Footer />
           </div>
