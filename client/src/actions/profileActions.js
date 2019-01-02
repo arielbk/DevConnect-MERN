@@ -12,6 +12,7 @@ export const getCurrentProfile = () => dispatch => {
         })
       )
     .catch(err =>
+      // return an empty profile
       dispatch({
         type: GET_PROFILE,
         payload: {}
