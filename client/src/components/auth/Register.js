@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { registerUser } from '../../actions/authActions';
-import TextFieldGroup from '../common/textFieldGroup';
+import TextFieldGroup from '../common/TextFieldGroup';
 
 class Register extends Component {
   state = {
@@ -104,7 +104,7 @@ class Register extends Component {
 Register.propTypes = {
   registerUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
-  errors: PropTypes.object.isRequired
+  errors: PropTypes.object.isRequired,
 }
 
 const mapStateToProps = (state) => ({
